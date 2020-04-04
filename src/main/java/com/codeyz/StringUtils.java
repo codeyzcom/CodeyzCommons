@@ -4,7 +4,7 @@ public class StringUtils {
 
     public static String bytesToHex(byte[] data) {
         if (data == null) {
-            return "";
+            return null;
         }
         StringBuilder sb = new StringBuilder(2 * data.length);
         for (byte b : data) {
