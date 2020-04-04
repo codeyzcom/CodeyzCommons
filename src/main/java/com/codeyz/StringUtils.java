@@ -25,9 +25,26 @@ public class StringUtils {
         if ((c >= '0') && (c <= '9')) {
             return (c - '0');
         }
-        if ((c >= 'a') && (c <='f')) {
+        if ((c >= 'a') && (c <= 'f')) {
             return (c - 'a' + 10);
         }
         throw new IllegalArgumentException();
+    }
+
+    public static byte[] hexToBytes(String str) {
+        if (str == null) {
+            return null;
+        }
+        int len = str.length();
+        int blen = (len + 1) / 2;
+        byte[] buffer = new byte[blen];
+
+        for (--len, --blen; len > 0; len -= 2, --blen) {
+            buffer[blen] = (byte) (asciiToHex(str.charAt(len - 1)) << 4 | asciiToHex(str.charAt(len)));
+        }
+        if (len == 0) {
+            buffer[0] = (byte) asciiToHex(str.charAt(0));
+        }
+        return buffer;
     }
 }
