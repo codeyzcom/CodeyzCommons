@@ -17,4 +17,17 @@ public class StringUtils {
         }
         return sb.toString();
     }
+
+    public static int asciiToHex(char c) {
+        if ((c >= 'A') && (c <= 'F')) {
+            return (c - 'A' + 10);
+        }
+        if ((c >= '0') && (c <= '9')) {
+            return (c - '0');
+        }
+        if ((c >= 'a') && (c <='f')) {
+            return (c - 'a' + 10);
+        }
+        throw new IllegalArgumentException();
+    }
 }
