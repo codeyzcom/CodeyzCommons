@@ -67,4 +67,8 @@ public class FileUtils {
             copy(in, out);
         }
     }
+
+    public static void copy(String src, String dest) throws IOException {
+        copy(new File(src), new File(dest));
+    }
 }
