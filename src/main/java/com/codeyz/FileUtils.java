@@ -1,9 +1,6 @@
 package com.codeyz;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 public class FileUtils {
 
@@ -27,7 +24,6 @@ public class FileUtils {
 
 
     /**
-     *
      * @param src
      * @param dest
      * @param maxSize The maximum number of bytes. If -1, then write everything.
@@ -55,4 +51,9 @@ public class FileUtils {
         } while (true);
         return res;
     }
+
+    public static int copy(InputStream src, OutputStream dest) throws IOException {
+        return copy(src, dest, -1);
+    }
+
 }
