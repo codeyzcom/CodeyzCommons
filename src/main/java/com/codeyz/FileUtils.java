@@ -71,4 +71,16 @@ public class FileUtils {
     public static void copy(String src, String dest) throws IOException {
         copy(new File(src), new File(dest));
     }
+
+    public static void clearDir(String path) throws IOException {
+        File[] files = new File(path).listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile() && file.exists() && !file.delete()) {
+                    throw new IOException("Can't delete file: \"" + file.getAbsolutePath() + "\"");
+                }
+            }
+        }
+    }
+
 }
