@@ -56,4 +56,15 @@ public class FileUtils {
         return copy(src, dest, -1);
     }
 
+    public static void copy(File srcFile, File destFile) throws IOException {
+        if (!destFile.exists()) {
+            destFile.getParentFile().mkdirs();
+        }
+        destFile.createNewFile();
+
+        try (FileInputStream in = new FileInputStream(srcFile);
+             FileOutputStream out = new FileOutputStream(destFile, false)) {
+            copy(in, out);
+        }
+    }
 }
