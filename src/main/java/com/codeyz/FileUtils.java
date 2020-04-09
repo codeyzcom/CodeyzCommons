@@ -1,6 +1,9 @@
 package com.codeyz;
 
 import java.io.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Properties;
 
 public class FileUtils {
 
@@ -21,7 +24,6 @@ public class FileUtils {
             return null;
         }
     }
-
 
     /**
      * @param src
@@ -81,6 +83,26 @@ public class FileUtils {
                 }
             }
         }
+    }
+
+
+    public static Map<String, String> readPropToMap(String resourceName) throws IOException {
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        Properties properties = new Properties();
+        Map<String, String> result = new LinkedHashMap<>();
+
+        InputStream stream = loader.getResourceAsStream(resourceName);
+        if (stream == null) {
+            return null;
+        }
+        properties.load(stream);
+
+        for (String key : properties.stringPropertyNames()) {
+            String value = properties.getProperty(key);
+            result.put(key, value);
+        }
+
+        return result;
     }
 
 }
