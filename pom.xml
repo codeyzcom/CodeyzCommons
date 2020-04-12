@@ -6,7 +6,7 @@
 
     <groupId>com.codeyz</groupId>
     <artifactId>CodeyzCommons</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
