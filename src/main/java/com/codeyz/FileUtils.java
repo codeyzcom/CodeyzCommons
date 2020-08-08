@@ -97,10 +97,10 @@ public class FileUtils {
         }
         properties.load(stream);
 
-        for (String key : properties.stringPropertyNames()) {
+        properties.stringPropertyNames().forEach(key -> {
             String value = properties.getProperty(key);
             result.put(key, value);
-        }
+        });
 
         return result;
     }
